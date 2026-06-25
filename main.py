@@ -10,6 +10,12 @@ load_dotenv()
 
 app = FastAPI()
 
+precios_proveedor = {
+    "SKU123": 100,
+    "SKU456": 250,
+    "SKU789": 75
+}
+
 
 class ChatRequest(BaseModel):
     message: str
@@ -18,6 +24,8 @@ class ChatRequest(BaseModel):
 @app.post("/chat")
 def chat(request: ChatRequest):
     api_key = os.getenv("GROQ_API_KEY")
+    # Si no existe en el .env, usa uno por defecto
+    system_prompt = os.getenv("SYSTEM_PROMPT")
     if not api_key:
         return {"error": "API key no configurada en .env"}
 
@@ -29,7 +37,7 @@ def chat(request: ChatRequest):
     payload = {
         "model": "llama-3.1-8b-instant",
         "messages": [
-            {"role": "system", "content": "Eres un asistente útil."},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": request.message}
         ]
     }
