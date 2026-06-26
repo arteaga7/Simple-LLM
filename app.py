@@ -8,7 +8,7 @@ load_dotenv()
 
 def send_message(message: str):
     url = "http://127.0.0.1:8000/chat"
-    payload = {"message": message}
+    payload = {"message": message, "session_id": "usuario_123"}
     headers = {"Content-Type": "application/json"}
 
     response = requests.post(url, json=payload, headers=headers)
