@@ -24,12 +24,6 @@ def send_message(message: str):
 
 
 if __name__ == "__main__":
-    api_key = os.getenv("GROQ_API_KEY")
-    if not api_key:
-        print("⚠️ No se encontró la variable GROQ_API_KEY en tu .env")
-    else:
-        print("✅ API Key cargada desde .env")
-
     print("Escribe 'salir' para terminar.")
     while True:
         user_input = input("Tú: ")

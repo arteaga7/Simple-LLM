@@ -32,7 +32,7 @@ python -m venv env && source env/bin/activate && pip install -r requirements.txt
 3. Create your ".env" file, whith the following content:
 ```
 GROQ_API_KEY=your_API_Key
-SYSTEM_PROMPT = "Eres un asistente experto en programación y muy útil."
+SYSTEM_PROMPT = "Eres un chatbot que valida precios contra la lista del proveedor y responde brevemente si hay discrepancias en los productos o en los precios solicitados por el cliente."
 ```
 4. Run "main.py" with:
 ```

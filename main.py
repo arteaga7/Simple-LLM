@@ -24,10 +24,11 @@ class ChatRequest(BaseModel):
 @app.post("/chat")
 def chat(request: ChatRequest):
     api_key = os.getenv("GROQ_API_KEY")
-    # Si no existe en el .env, usa uno por defecto
     system_prompt = os.getenv("SYSTEM_PROMPT")
     if not api_key:
         return {"error": "API key no configurada en .env"}
+    if not system_prompt:
+        return {"error": "SYSTEM_PROMPT no configurado en .env"}
 
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
@@ -38,7 +39,7 @@ def chat(request: ChatRequest):
         "model": "llama-3.1-8b-instant",
         "messages": [
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": request.message}
+            {"role": "user", "content": f"Mensaje: {request.message}. Lista de precios: {precios_proveedor}"}
         ]
     }
 
