@@ -11,9 +11,9 @@ load_dotenv()
 app = FastAPI()
 
 precios_proveedor = {
-    "SKU123": 100,
-    "SKU456": 250,
-    "SKU789": 75
+    "camisa": 100,
+    "pantalón": 250,
+    "corbata": 75
 }
 
 
