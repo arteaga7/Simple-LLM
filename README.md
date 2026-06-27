@@ -1,17 +1,18 @@
 # Simple-LLM
-
+Simple chatbot with conversational memory implementing FastAPI, SQLModel (Pydantic + SQLAlchemy) and OpenAI libraries.
 
 
 ## 🌎 Repository Structure
 ```
 Simple-LLM/
-└── main.py          # Punto de entrada FastAPI
-└── client.py        # Script para chatear
-└── .env             # Contains all secret data (not provided)
+└── main.py             # FastAPI entry point
+└── app.py              # Streamlit interface
+└── .env                # Contains API Key and system_promt (not provided)
 └── requirements.txt
 ```
 
 ## ✨ Details
+
 ![alt text](<Documentation/Captura de pantalla 2026-04-23 134002.png>)
 Fig. 1.
 
@@ -20,14 +21,14 @@ Fig. 2.
 
 
 
-## 🚀 How to run locally
+## 🚀 How to run
 1. Clone this repository:
 ```
 git clone https://github.com/arteaga7/Simple-LLM.git
 ```
 2. Create virtual enviroment and install dependencies (Linux):
 ```
-python -m venv env && source env/bin/activate && pip install -r requirements.txt
+python3 -m venv env && source env/bin/activate && pip install -r requirements.txt
 ```
 3. Create your ".env" file, whith the following content:
 ```
@@ -38,7 +39,17 @@ SYSTEM_PROMPT = "Eres un chatbot que valida los precios y productos del usuario 
 ```
 uvicorn main:app --reload
 ```
-5. Run the interface (Python client):
+5. Run the interface (client):
 ```
 streamlit run app.py
+```
+
+## Results
+
+
+## 🧪 Quick API test
+```
+curl -X POST "http://127.0.0.1:8000/chat" \
+-H "Content-Type: application/json" \
+-d '{"message":"Hola, ¿cómo estás?", "session_id":"t1"}'
 ```
