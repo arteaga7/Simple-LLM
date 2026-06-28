@@ -1,5 +1,5 @@
 # Simple-LLM
-Simple chatbot with conversational memory implementing FastAPI, SQLModel (Pydantic + SQLAlchemy) and OpenAI libraries.
+Simple chatbot with conversational memory implementing FastAPI, SQLModel (Pydantic + SQLAlchemy) and OpenAI libraries (API Key required).
 
 
 ## 🌎 Repository Structure
@@ -9,17 +9,8 @@ Simple-LLM/
 └── app.py              # Streamlit interface
 └── .env                # Contains API Key and system_promt (not provided)
 └── requirements.txt
+└── img/                # Some pictures
 ```
-
-## ✨ Details
-
-![alt text](<Documentation/Captura de pantalla 2026-04-23 134002.png>)
-Fig. 1.
-
-![alt text](<Documentation/Captura de pantalla 2026-04-23 133918.png>)
-Fig. 2.
-
-
 
 ## 🚀 How to run
 1. Clone this repository:
@@ -44,12 +35,28 @@ uvicorn main:app --reload
 streamlit run app.py
 ```
 
-## Results
-
-
 ## 🧪 Quick API test
 ```
 curl -X POST "http://127.0.0.1:8000/chat" \
 -H "Content-Type: application/json" \
 -d '{"message":"Hola, ¿cómo estás?", "session_id":"t1"}'
 ```
+
+## 🎯 Results
+The chatbot is working correctly, responding politely to a greeting or a purchase order, as shwon in figs 1 and 2.
+![alt text](<img/f1.png>)
+Fig. 1.
+
+![alt text](<img/f2.png>)
+Fig. 2.
+
+After saving a purchase order, it is possible to verify the convesational memory, as shown in Fig. 3.
+
+![alt text](<img/f3.png>)
+Fig. 3.
+
+## 🗺️ Further work
+In order to scale this project, the following step is to add adata base connection to store the conversation and the products information. That project is presented in:
+
+https://github.com/arteaga7/Simple-Agent
+
